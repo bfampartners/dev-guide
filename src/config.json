@@ -1,0 +1,21 @@
+{
+    "sessionAuthHost": "bfam-test.symphony.com",
+    "sessionAuthPort": 443,
+    "keyAuthHost": "bfam-test.symphony.com",
+    "keyAuthPort": 443,
+    "podHost": "bfam-test.symphony.com",
+    "podPort": 443,
+    "agentHost": "bfam-test.symphony.com",
+    "agentPort": 443,
+    "botCertPath": "./rsa/",
+    "authType": "rsa", 
+    "botPrivateKeyPath": "./rsa/",
+    "botPrivateKeyName": "privatekey.pem",
+    "botUsername": "rfq-pricer",
+    "botEmailAddress": "rfq-pricer@bfam-partners.com",
+    "proxyURL": "",
+    "proxyUsername": "",
+    "proxyPassword": "",
+    "authTokenRefreshPeriod": "30"
+  }
+  
