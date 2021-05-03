@@ -1,4 +1,4 @@
-BFAM RFQ App<br><br>API Developers Guide
+BFAM RFQ App<br><br>Eq Deriv API Developers Guide
 ========================================
 
 November 15th, 2019
@@ -740,3 +740,84 @@ Products not covered for auto pricing
 The following product short codes are not covered for auto pricing:
 
 EFP, PSS, CSS, TRS, S, POP_V, POP_VKS
+
+
+FX API Developers Guide
+========================================
+
+May 3rd, 2021
+
+Introduction
+============
+
+This document describes the API available to interact with the BFAM Symphony RFQ Application for FX asset class.
+
+
+Workflow
+========
+The basic work flow is essentially:
+1. RFQ is sent from BFAM
+2. Broker acknowledges the RFQ
+3. Broker sends price
+4. BFAM optionally sends updated tickets with new comments any number of times
+5. BFAM accepts quote or passes
+6. Broker accepts or rejects
+7. Broker submit trade detail (e.g. reference price)
+8. Optionally BFAM sends pass message indicating avarage spread in case broker has not accepted
+
+This boils down to two distinct tickets:
+
+**RFQ ticket**  
+It can be sent initially and followed up with any number of refinement.
+
+**Confirmation ticket**  
+It is sent when BFAM accepts. Identified in code by the confMsg being set.
+
+# BFML Structure
+## FX Swap
+```json
+{
+	"type": "FxSwap",
+	"structure": {
+		"_class": "com.bfam.fxautoquoter.models.FxSwap",
+		"title": "USDTWD",
+		"ccyPair": "USDTWD",
+		"ccy": "USD",
+		"quantity": 1000000.0,
+		"settlementDate": "2021-06-03",
+		"farCcy": "USD",
+		"farQuantity": 1000000.0,
+		"farSettlementDate": "2021-11-03"
+	}
+}
+```
+
+## CNHCNY
+```json
+{
+	"type": "Basis",
+	"structure": {
+		"_class": "com.bfam.fxautoquoter.models.Basis",
+		"title": "CNHCNY",
+		"ccyPair": "CNHCNY",
+		"ccy": "USD",
+		"quantity": 1000000.0,
+		"settlementDate": "2021-05-28"
+	}
+}
+```
+
+## Forward
+```json
+{
+	"type": "Forward",
+	"structure": {
+		"_class": "com.bfam.fxautoquoter.models.Forward",
+		"title": "EURUSD",
+		"ccyPair": "EURUSD",
+		"ccy": "EUR",
+		"quantity": 1000000.0,
+		"settlementDate": "2021-05-28"
+	}
+}
+```
